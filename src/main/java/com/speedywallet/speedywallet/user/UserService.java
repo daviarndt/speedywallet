@@ -31,7 +31,7 @@ public class UserService {
     }
 
     public boolean userAlreadyExistsWithEmailOrDocument(String email, String document) {
-        if (userRepository.findByEmail(email).isPresent() || userRepository.findByDocument(document).isPresent()) {
+        if (userRepository.findByEmailNative(email).isPresent() || userRepository.findByDocument(document).isPresent()) {
             return true;
         }
         return false;
