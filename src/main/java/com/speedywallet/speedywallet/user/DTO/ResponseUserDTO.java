@@ -1,12 +1,12 @@
-package com.speedywallet.speedywallet.User.DTO;
+package com.speedywallet.speedywallet.user.DTO;
 
-import com.speedywallet.speedywallet.User.UserModel;
-import com.speedywallet.speedywallet.User.UserType;
+import com.speedywallet.speedywallet.user.UserModel;
+import com.speedywallet.speedywallet.user.UserType;
 
 import java.math.BigDecimal;
 
 public record ResponseUserDTO(
-        Long id,
+        Long userId,
         String firstName,
         String lastName,
         String document,
@@ -17,7 +17,7 @@ public record ResponseUserDTO(
 ) {
     public ResponseUserDTO(UserModel userModel) {
         this(
-                userModel.getId(),
+                userModel.getUserId(),
                 userModel.getFirstName(),
                 userModel.getLastName(),
                 userModel.getDocument(),

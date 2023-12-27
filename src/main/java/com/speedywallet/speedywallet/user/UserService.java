@@ -1,8 +1,9 @@
-package com.speedywallet.speedywallet.User;
+package com.speedywallet.speedywallet.user;
 
-import com.speedywallet.speedywallet.User.DTO.RequestUserDTO;
-import com.speedywallet.speedywallet.User.DTO.ResponseUserDTO;
+import com.speedywallet.speedywallet.user.DTO.RequestUserDTO;
+import com.speedywallet.speedywallet.user.DTO.ResponseUserDTO;
 import com.speedywallet.speedywallet.utils.exception.UserFoundByEmailOrDocumentException;
+import com.speedywallet.speedywallet.utils.exception.UserNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,5 +28,9 @@ public class UserService {
             return true;
         }
         return false;
+    }
+
+    public UserModel getUserById(Long id) {
+        return userRepository.findById(id).orElseThrow(() -> new UserNotFoundException("User not found by the given ID"));
     }
 }

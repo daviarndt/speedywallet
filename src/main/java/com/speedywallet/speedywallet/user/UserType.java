@@ -1,4 +1,4 @@
-package com.speedywallet.speedywallet.User;
+package com.speedywallet.speedywallet.user;
 
 public enum UserType {
     COMMON,

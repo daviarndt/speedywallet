@@ -1,6 +1,6 @@
-package com.speedywallet.speedywallet.User;
+package com.speedywallet.speedywallet.user;
 
-import com.speedywallet.speedywallet.User.DTO.RequestUserDTO;
+import com.speedywallet.speedywallet.user.DTO.RequestUserDTO;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
@@ -13,8 +13,8 @@ public class UserModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", updatable = false, nullable = false)
-    private Long id;
+    @Column(name = "user_id", updatable = false, nullable = false)
+    private Long userId;
 
     @Column(name = "first_name", nullable = false)
     @NotBlank(message = "First Name is mandatory")
@@ -49,8 +49,8 @@ public class UserModel {
     @Column(name = "is_active", nullable = false)
     private boolean isActive = true;
 
-    public Long getId() {
-        return id;
+    public Long getUserId() {
+        return userId;
     }
 
     public String getFirstName() {
