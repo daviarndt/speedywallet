@@ -5,6 +5,7 @@ import com.speedywallet.speedywallet.transaction.dto.ResponseTransactionDTO;
 import com.speedywallet.speedywallet.transaction.validators.TransactionValidators;
 import com.speedywallet.speedywallet.user.UserModel;
 import com.speedywallet.speedywallet.user.UserService;
+import com.speedywallet.speedywallet.utils.exception.UserIsNotOwnUserException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -24,11 +25,15 @@ public class TransactionService {
     @Autowired
     private List<TransactionValidators> transactionValidators;
 
-    public ResponseTransactionDTO saveTransaction(RequestTransactionDTO requestTransactionDTO) {
+    public ResponseTransactionDTO saveTransaction(RequestTransactionDTO requestTransactionDTO, String userEmail) {
         transactionValidators.forEach(v -> v.validate(requestTransactionDTO));
 
         UserModel payer = userService.getUserById(requestTransactionDTO.payerId());
         UserModel payee = userService.getUserById(requestTransactionDTO.payeeId());
+
+        if (!payer.getEmail().equals(userEmail)) {
+            throw new UserIsNotOwnUserException("User tried to make transfer for another user");
+        }
 
         payer.setBalance(payer.getBalance().subtract(requestTransactionDTO.amount()));
         payee.setBalance(payee.getBalance().add(requestTransactionDTO.amount()));

@@ -22,8 +22,8 @@ public class TransactionController {
     private TransactionService transactionService;
 
     @PostMapping
-    public ResponseEntity<ApiResponse<ResponseTransactionDTO>> saveTransaction(@RequestBody @Valid RequestTransactionDTO requestTransactionDTO) {
-        ResponseTransactionDTO responseTransactionDTO = transactionService.saveTransaction(requestTransactionDTO);
+    public ResponseEntity<ApiResponse<ResponseTransactionDTO>> saveTransaction(@RequestBody @Valid RequestTransactionDTO requestTransactionDTO, Principal principal) {
+        ResponseTransactionDTO responseTransactionDTO = transactionService.saveTransaction(requestTransactionDTO, principal.getName());
         return new ResponseEntity<>(ApiResponse.success(responseTransactionDTO), HttpStatus.CREATED);
     }
 

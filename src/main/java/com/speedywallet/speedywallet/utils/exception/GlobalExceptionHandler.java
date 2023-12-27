@@ -43,6 +43,11 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(ApiResponse.exception(ex.getMessage()), HttpStatus.FORBIDDEN);
     }
 
+    @ExceptionHandler(UserIsNotOwnUserException.class)
+    public ResponseEntity<ApiResponse> handleUserIsNotOwnUserException(UserIsNotOwnUserException ex) {
+        return new ResponseEntity<>(ApiResponse.exception(ex.getMessage()), HttpStatus.FORBIDDEN);
+    }
+
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity handleMethodArgumentNotValidException(MethodArgumentNotValidException ex) {
         List<FieldError> errors = ex.getFieldErrors();
