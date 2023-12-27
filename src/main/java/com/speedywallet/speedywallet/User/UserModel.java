@@ -18,14 +18,17 @@ public class UserModel {
 
     @Column(name = "first_name", nullable = false)
     @NotBlank(message = "First Name is mandatory")
+    @Size(min = 3)
     private String firstName;
 
     @Column(name = "last_name", nullable = false)
     @NotBlank(message = "Last Name is mandatory")
+    @Size(min = 3)
     private String lastName;
 
     @Column(name = "document", nullable = false, unique = true)
     @NotBlank(message = "Document is mandatory")
+    @Size(min = 11, max = 14)
     private String document;
 
     @Column(name = "email", nullable = false, unique = true)

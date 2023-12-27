@@ -8,13 +8,13 @@ import jakarta.validation.constraints.Size;
 
 public record RequestUserDTO(
 
-        @NotBlank
+        @NotBlank @Size(min = 3)
         String firstName,
 
-        @NotBlank
+        @NotBlank @Size(min = 3)
         String lastName,
 
-        @NotBlank
+        @NotBlank @Size(min = 11, max = 14)
         String document,
 
         @NotBlank @Email
