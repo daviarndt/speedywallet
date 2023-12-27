@@ -2,6 +2,7 @@ package com.speedywallet.speedywallet.transaction;
 
 import com.speedywallet.speedywallet.user.UserModel;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -15,7 +16,8 @@ public class TransactionModel {
     @Column(name = "transaction_id", updatable = false, nullable = false)
     private Long transactionId;
 
-    @Column(name = "amount")
+    @Column(name = "amount", nullable = false)
+    @NotNull(message = "Amount is mandatory")
     private BigDecimal amount;
 
     @JoinColumn(name = "payer_id", nullable = false)

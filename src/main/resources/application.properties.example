@@ -5,3 +5,5 @@ spring.datasource.password={DATABASE_PASSWORD}
 spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
 
 server.error.include-stacktrace=never
+
+api.url.transaction.authorization=https://run.mocky.io/v3/5794d450-d2e2-4412-8131-73d0293ac1cc
