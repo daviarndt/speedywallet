@@ -1,5 +1,6 @@
 package com.speedywallet.speedywallet.User;
 
+import com.speedywallet.speedywallet.User.DTO.RequestUserDTO;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
@@ -92,11 +93,22 @@ public class UserModel {
         isActive = active;
     }
 
+    public UserModel() {
+    }
+
     public UserModel(String fullName, String document, String email, String password, UserType userType) {
         this.fullName = fullName;
         this.document = document;
         this.email = email;
         this.password = password;
         this.userType = userType;
+    }
+
+    public UserModel(RequestUserDTO requestUserDTO) {
+        this.fullName = requestUserDTO.fullName();
+        this.document = requestUserDTO.document();
+        this.email = requestUserDTO.email();
+        this.password = requestUserDTO.password();
+        this.userType = requestUserDTO.userType();
     }
 }
