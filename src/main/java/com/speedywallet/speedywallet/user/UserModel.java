@@ -1,6 +1,6 @@
 package com.speedywallet.speedywallet.user;
 
-import com.speedywallet.speedywallet.user.DTO.RequestUserDTO;
+import com.speedywallet.speedywallet.user.dto.RequestUserDTO;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;

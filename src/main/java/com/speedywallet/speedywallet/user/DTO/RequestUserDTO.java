@@ -1,4 +1,4 @@
-package com.speedywallet.speedywallet.user.DTO;
+package com.speedywallet.speedywallet.user.dto;
 
 import com.speedywallet.speedywallet.user.UserType;
 import jakarta.validation.constraints.Email;

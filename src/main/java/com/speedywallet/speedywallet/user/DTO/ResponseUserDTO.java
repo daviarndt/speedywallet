@@ -1,4 +1,4 @@
-package com.speedywallet.speedywallet.user.DTO;
+package com.speedywallet.speedywallet.user.dto;
 
 import com.speedywallet.speedywallet.user.UserModel;
 import com.speedywallet.speedywallet.user.UserType;

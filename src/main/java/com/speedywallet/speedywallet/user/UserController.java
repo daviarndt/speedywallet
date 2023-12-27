@@ -1,7 +1,7 @@
 package com.speedywallet.speedywallet.user;
 
-import com.speedywallet.speedywallet.user.DTO.RequestUserDTO;
-import com.speedywallet.speedywallet.user.DTO.ResponseUserDTO;
+import com.speedywallet.speedywallet.user.dto.RequestUserDTO;
+import com.speedywallet.speedywallet.user.dto.ResponseUserDTO;
 import com.speedywallet.speedywallet.utils.ApiResponse;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
