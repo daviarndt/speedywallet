@@ -1,5 +1,6 @@
 package com.speedywallet.speedywallet.transaction;
 
+import com.speedywallet.speedywallet.transaction.dto.RequestTransactionDTO;
 import com.speedywallet.speedywallet.user.UserModel;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
@@ -30,4 +31,51 @@ public class TransactionModel {
 
     @Column(name = "created_at", nullable = false)
     LocalDateTime createdAt = LocalDateTime.now();
+
+    public TransactionModel(BigDecimal amount, UserModel payer, UserModel payee) {
+        this.amount = amount;
+        this.payer = payer;
+        this.payee = payee;
+    }
+
+    public TransactionModel() {
+    }
+
+    public TransactionModel(RequestTransactionDTO requestTransactionDTO, UserModel payer, UserModel payee) {
+        this.amount = requestTransactionDTO.amount();
+        this.payer = payer;
+        this.payee = payee;
+    }
+
+    public Long getTransactionId() {
+        return transactionId;
+    }
+
+    public BigDecimal getAmount() {
+        return amount;
+    }
+
+    public void setAmount(BigDecimal amount) {
+        this.amount = amount;
+    }
+
+    public UserModel getPayer() {
+        return payer;
+    }
+
+    public void setPayer(UserModel payer) {
+        this.payer = payer;
+    }
+
+    public UserModel getPayee() {
+        return payee;
+    }
+
+    public void setPayee(UserModel payee) {
+        this.payee = payee;
+    }
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
 }
