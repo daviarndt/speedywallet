@@ -6,6 +6,8 @@ import com.speedywallet.speedywallet.transaction.validators.TransactionValidator
 import com.speedywallet.speedywallet.user.UserModel;
 import com.speedywallet.speedywallet.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -38,5 +40,10 @@ public class TransactionService {
         userService.saveUser(payee);
 
         return new ResponseTransactionDTO(transactionModel);
+    }
+
+    public Page<ResponseTransactionDTO> getTransactionsByUser(Pageable pageable, String email) {
+        UserModel user = userService.getUserByEmail(email);
+        return transactionRepository.findAllTransactionsByUserId(user.getUserId(), pageable).map(ResponseTransactionDTO::new);
     }
 }

@@ -40,4 +40,8 @@ public class UserService {
     public UserModel getUserById(Long id) {
         return userRepository.findById(id).orElseThrow(() -> new UserNotFoundException("User not found by the given ID"));
     }
+
+    public UserModel getUserByEmail(String email) {
+        return userRepository.findByEmailNative(email).orElseThrow(() -> new UserNotFoundException("User not found by the given email"));
+    }
 }

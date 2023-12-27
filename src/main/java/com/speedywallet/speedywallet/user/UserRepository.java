@@ -15,9 +15,10 @@ public interface UserRepository extends JpaRepository<UserModel, Long> {
             value = "SELECT * FROM users WHERE EMAIL=:login",
             nativeQuery = true
     )
-    Optional<UserDetails> findByEmailNative(@Param("login") String login);
+    Optional<UserModel> findByEmailNative(@Param("login") String login);
 
     Optional<UserModel> findByDocument(String document);
 
+    // Returning UserDetails for Authentication:
     Optional<UserDetails> findByEmail(String login);
 }
