@@ -3,7 +3,6 @@ package com.speedywallet.speedywallet.user;
 import com.speedywallet.speedywallet.user.dto.RequestUserDTO;
 import com.speedywallet.speedywallet.user.dto.ResponseUserDTO;
 import com.speedywallet.speedywallet.utils.ApiResponse;
-import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -20,7 +19,6 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @Transactional
     @PostMapping()
     public ResponseEntity<ApiResponse<ResponseUserDTO>> saveUser(@RequestBody @Valid RequestUserDTO requestUserDTO) {
         ResponseUserDTO responseUserDTO = userService.saveUser(requestUserDTO);

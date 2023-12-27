@@ -4,6 +4,7 @@ import com.speedywallet.speedywallet.user.dto.RequestUserDTO;
 import com.speedywallet.speedywallet.user.dto.ResponseUserDTO;
 import com.speedywallet.speedywallet.utils.exception.UserFoundByEmailOrDocumentException;
 import com.speedywallet.speedywallet.utils.exception.UserNotFoundException;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +14,7 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
+    @Transactional
     public ResponseUserDTO saveUser(RequestUserDTO requestUserDTO) {
         boolean userFound = userAlreadyExistsWithEmailOrDocument(requestUserDTO.email(), requestUserDTO.document());
         if (userFound) {
