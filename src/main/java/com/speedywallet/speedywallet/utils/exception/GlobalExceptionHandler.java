@@ -23,6 +23,21 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(ApiResponse.exception(ex.getMessage()), HttpStatus.NOT_FOUND);
     }
 
+    @ExceptionHandler(UserIsShopkeeperException.class)
+    public ResponseEntity<ApiResponse> handleUserIsShopkeeperException(UserIsShopkeeperException ex) {
+        return new ResponseEntity<>(ApiResponse.exception(ex.getMessage()), HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(InsufficientBalanceException.class)
+    public ResponseEntity<ApiResponse> handleInsufficientBalanceException(InsufficientBalanceException ex) {
+        return new ResponseEntity<>(ApiResponse.exception(ex.getMessage()), HttpStatus.FORBIDDEN);
+    }
+
+    @ExceptionHandler(UnauthorizedTransactionException.class)
+    public ResponseEntity<ApiResponse> handleUnauthorizedTransactionException(UnauthorizedTransactionException ex) {
+        return new ResponseEntity<>(ApiResponse.exception(ex.getMessage()), HttpStatus.FORBIDDEN);
+    }
+
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity handleMethodArgumentNotValidException(MethodArgumentNotValidException ex) {
         List<FieldError> errors = ex.getFieldErrors();
