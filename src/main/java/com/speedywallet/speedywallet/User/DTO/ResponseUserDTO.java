@@ -5,7 +5,8 @@ import com.speedywallet.speedywallet.User.UserType;
 
 public record ResponseUserDTO(
         Long id,
-        String fullName,
+        String firstName,
+        String lastName,
         String document,
         String email,
         UserType userType
@@ -13,7 +14,8 @@ public record ResponseUserDTO(
     public ResponseUserDTO(UserModel userModel) {
         this(
                 userModel.getId(),
-                userModel.getFullName(),
+                userModel.getFirstName(),
+                userModel.getLastName(),
                 userModel.getDocument(),
                 userModel.getEmail(),
                 userModel.getUserType()

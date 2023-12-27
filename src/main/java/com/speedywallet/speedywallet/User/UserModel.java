@@ -14,9 +14,13 @@ public class UserModel {
     @Column(name = "id", updatable = false, nullable = false)
     private Long id;
 
-    @Column(name = "full_name", nullable = false)
-    @NotBlank(message = "Full Name is mandatory")
-    private String fullName;
+    @Column(name = "first_name", nullable = false)
+    @NotBlank(message = "First Name is mandatory")
+    private String firstName;
+
+    @Column(name = "last_name", nullable = false)
+    @NotBlank(message = "Last Name is mandatory")
+    private String lastName;
 
     @Column(name = "document", nullable = false, unique = true)
     @NotBlank(message = "Document is mandatory")
@@ -45,12 +49,20 @@ public class UserModel {
         this.id = id;
     }
 
-    public String getFullName() {
-        return fullName;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public String getDocument() {
@@ -96,8 +108,9 @@ public class UserModel {
     public UserModel() {
     }
 
-    public UserModel(String fullName, String document, String email, String password, UserType userType) {
-        this.fullName = fullName;
+    public UserModel(String firstName, String lastName, String document, String email, String password, UserType userType) {
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.document = document;
         this.email = email;
         this.password = password;
@@ -105,7 +118,8 @@ public class UserModel {
     }
 
     public UserModel(RequestUserDTO requestUserDTO) {
-        this.fullName = requestUserDTO.fullName();
+        this.firstName = requestUserDTO.firstName();
+        this.lastName = requestUserDTO.lastName();
         this.document = requestUserDTO.document();
         this.email = requestUserDTO.email();
         this.password = requestUserDTO.password();

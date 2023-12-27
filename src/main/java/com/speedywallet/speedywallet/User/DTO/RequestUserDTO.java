@@ -9,7 +9,10 @@ import jakarta.validation.constraints.Size;
 public record RequestUserDTO(
 
         @NotBlank
-        String fullName,
+        String firstName,
+
+        @NotBlank
+        String lastName,
 
         @NotBlank
         String document,
