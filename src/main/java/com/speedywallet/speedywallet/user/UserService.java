@@ -17,12 +17,17 @@ public class UserService {
     @Transactional
     public ResponseUserDTO saveUser(RequestUserDTO requestUserDTO) {
         boolean userFound = userAlreadyExistsWithEmailOrDocument(requestUserDTO.email(), requestUserDTO.document());
+
         if (userFound) {
             throw new UserFoundByEmailOrDocumentException("User already exists by the given email/document");
         }
-        return new ResponseUserDTO(
-                userRepository.save(new UserModel(requestUserDTO))
-        );
+
+        return new ResponseUserDTO(userRepository.save(new UserModel(requestUserDTO)));
+    }
+
+    @Transactional
+    public void saveUser(UserModel userModel) {
+        userRepository.save(userModel);
     }
 
     public boolean userAlreadyExistsWithEmailOrDocument(String email, String document) {

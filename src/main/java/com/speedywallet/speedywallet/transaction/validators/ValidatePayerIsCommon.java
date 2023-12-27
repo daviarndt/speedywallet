@@ -17,7 +17,7 @@ public class ValidatePayerIsCommon implements TransactionValidators {
     public void validate(RequestTransactionDTO requestTransactionDTO) {
         UserModel payer = userService.getUserById(requestTransactionDTO.payerId());
 
-        if (payer.getUserType().equals("SHOPKEEPER"))
+        if (payer.getUserType().name().equals("SHOPKEEPER"))
             throw new UserIsShopkeeperException("User isn't allowed");
     }
 }

@@ -17,7 +17,7 @@ public class ValidatePayerHasBalance implements TransactionValidators {
     public void validate(RequestTransactionDTO requestTransactionDTO) {
         UserModel payer = userService.getUserById(requestTransactionDTO.payerId());
 
-        if (payer.getBalance().compareTo(payer.getBalance()) < 0)
+        if (payer.getBalance().compareTo(requestTransactionDTO.amount()) < 0)
             throw new InsufficientBalanceException("User has insufficient balance to complete the transfer");
     }
 }
