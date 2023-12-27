@@ -5,6 +5,8 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
+import java.math.BigDecimal;
+
 @Entity(name = "users")
 @Table(name = "users")
 public class UserModel {
@@ -38,15 +40,14 @@ public class UserModel {
     @Enumerated(EnumType.STRING)
     private UserType userType;
 
+    @Column(name = "balance", nullable = false)
+    private BigDecimal balance = BigDecimal.valueOf(0);
+
     @Column(name = "is_active", nullable = false)
     private boolean isActive = true;
 
     public Long getId() {
         return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getFirstName() {
@@ -95,6 +96,14 @@ public class UserModel {
 
     public void setUserType(UserType userType) {
         this.userType = userType;
+    }
+
+    public BigDecimal getBalance() {
+        return balance;
+    }
+
+    public void setBalance(BigDecimal balance) {
+        this.balance = balance;
     }
 
     public boolean isActive() {
