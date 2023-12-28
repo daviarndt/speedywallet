@@ -6,6 +6,7 @@ import com.speedywallet.speedywallet.transaction.validators.TransactionValidator
 import com.speedywallet.speedywallet.user.UserModel;
 import com.speedywallet.speedywallet.user.UserService;
 import com.speedywallet.speedywallet.utils.exception.UserIsNotOwnUserException;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -25,6 +26,7 @@ public class TransactionService {
     @Autowired
     private List<TransactionValidators> transactionValidators;
 
+    @Transactional
     public ResponseTransactionDTO saveTransaction(RequestTransactionDTO requestTransactionDTO, String userEmail) {
         transactionValidators.forEach(v -> v.validate(requestTransactionDTO));
 
